@@ -1,640 +1,1108 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Repositorio de conceptos</title>
+  <title>StevePedia | Repositorio de conceptos</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #4e54c8;
+      --primary-light: #8f94fb;
+      --primary-dark: #363795;
+      --secondary-color: #f5f7fa;
+      --text-dark: #343a40;
+      --text-light: #6c757d;
+      --white: #ffffff;
+      --box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+    }
 
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f8;
-    margin-top: 4rem;
-  }
+    body {
+      font-family: 'Poppins', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--secondary-color);
+      color: var(--text-dark);
+      line-height: 1.7;
+      padding-top: 70px;
+      overflow-x: hidden;
+    }
 
-  h1 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    color: #333;
-  }
+    .navbar {
+      background-color: var(--white) !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 12px 0;
+    }
 
-  .navbar {
-    background-color: #ffffff !important;
-    border-bottom: 1px solid #dee2e6;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-  }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary-color) !important;
+      letter-spacing: -0.5px;
+    }
 
-  .navbar-brand h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0;
-    color: #0d6efd;
-  }
+    .nav-link {
+      font-weight: 500;
+      color: var(--text-dark) !important;
+      position: relative;
+      margin: 0 10px;
+      transition: var(--transition);
+    }
 
-  .nav-link {
-    font-weight: 500;
-    color: #495057 !important;
-  }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: var(--transition);
+    }
 
-  .nav-link:hover {
-    color: #0d6efd !important;
-  }
+    .nav-link:hover:after,
+    .nav-link.active:after {
+      width: 100%;
+    }
 
-  .card {
-    margin: 15px;
-    border-radius: 10px;
-    border: none;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    transition: all 0.2s ease-in-out;
-  }
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary-color) !important;
+    }
 
-  .card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
-  }
+    section {
+      padding: 60px 0;
+      position: relative;
+    }
 
-  .card img {
-    height: 180px;
-    object-fit: cover;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
+    section:nth-child(even) {
+      background-color: var(--white);
+    }
 
-  .card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #212529;
-  }
+    .section-header {
+      margin-bottom: 40px;
+      text-align: center;
+      position: relative;
+    }
 
-  .card-text {
-    font-size: 0.95rem;
-    color: #495057;
-  }
+    .section-title {
+      font-weight: 700;
+      margin-bottom: 15px;
+      font-size: 2.2rem;
+      color: var(--primary-dark);
+      position: relative;
+      display: inline-block;
+    }
 
-  .btn-primary {
-    background-color: #0d6efd;
-    border: none;
-    font-weight: 500;
-  }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: var(--primary-light);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
 
-  .btn-primary:hover {
-    background-color: #084cdf;
-  }
+    .section-subtitle {
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto 20px;
+      font-size: 1.1rem;
+    }
 
-  .blockquote {
-    margin: 2rem 0;
-    padding: 1rem 1.5rem;
-    background-color: #ffffff;
-    border-left: 5px solid #0d6efd;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  }
-
-  .blockquote-footer {
-    font-size: 0.9rem;
-    color: #6c757d;
-  }
-
-  .footer {
-    margin-top: 60px;
-    padding: 30px;
-    background-color: #343a40;
-    color: #ffffff;
-    text-align: center;
-    font-size: 0.95rem;
-  }
-
-  .feedback {
-    background-color: #0d6efd;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 12px;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-  }
-
-  .feedback:hover {
-    background-color: #084cdf;
-  }
-
-  .container h1 {
-    padding-top: 1.5rem;
-  }
-
-  @media (max-width: 767.98px) {
     .card {
-      margin: 10px auto;
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      height: 100%;
     }
 
-    .navbar-brand h1 {
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .card-title {
       font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
     }
-  }
+
     .card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
+    .card-text {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
 
+    .btn-primary {
+      background-color: var(--primary-color);
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      padding: 8px 20px;
+      transition: var(--transition);
+    }
 
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-primary {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+      background-color: transparent;
+      font-weight: 500;
+    }
+
+    .btn-outline-primary:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .blockquote {
+      background-color: var(--white);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--box-shadow);
+      border-left: 4px solid var(--primary-color);
+      transition: var(--transition);
+    }
+
+    .blockquote:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .blockquote p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 10px;
+      font-style: italic;
+      color: var(--text-dark);
+    }
+
+    .blockquote-footer {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .footer {
+      background-color: #2d3436;
+      color: #fff;
+      padding: 50px 0 20px;
+      position: relative;
+      margin-top: 80px;
+    }
+
+    .footer-title {
+      color: var(--primary-light);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: #dfe6e9;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-light);
+      transform: translateX(5px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+
+    .social-icons a {
+      color: #fff;
+      margin-right: 15px;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-icons a:hover {
+      color: var(--primary-light);
+      transform: translateY(-5px);
+    }
+
+    .feedback {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .feedback:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 45px;
+      height: 45px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 99;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .back-to-top:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+    }
+
+    .book-link {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .book-link:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    .search-box {
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 50px 12px 20px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+      font-size: 1rem;
+    }
+
+    .search-button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      background-color: white;
+      border: 1px solid #e9ecef;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    @media (max-width: 991.98px) {
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .card-columns {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .card-columns {
+        column-count: 1;
+      }
+      
+      .navbar-brand {
+        font-size: 1.3rem;
+      }
+      
+      section {
+        padding: 40px 0;
+      }
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="position: fixed;;top:0px;z-index: 1;width: 100%; ">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-        <a class="navbar-brand fw-bold text-primary" href="#">StevePedia</a>
-
+      <a class="navbar-brand" href="#"><i class="fas fa-brain me-2"></i>StevePedia</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#conceptos">Conceptos</a>
+            <a class="nav-link active" aria-current="page" href="#conceptos"><i class="fas fa-lightbulb me-1"></i>Conceptos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#frases">Frases</a>
+            <a class="nav-link" href="#frases"><i class="fas fa-quote-left me-1"></i>Frases</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#libros">Libros</a>
+            <a class="nav-link" href="#libros"><i class="fas fa-book me-1"></i>Libros</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <div class="container" style="margin-top: 5%;" id="conceptos">
-    <h1>Conceptos</h1>
-    <div class="row justify-content-center">
-      <div class="card" style="width: 22rem;">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/William_of_Ockham_-_Logica_1341.jpg/220px-William_of_Ockham_-_Logica_1341.jpg"
-          class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Navaja de Ockham</h5>
-          <p class="card-text">La navaja de Ockham implica que, cuando dos teorías en igualdad de condiciones tienen las
-            mismas consecuencias, la teoría más simple tiene más probabilidades de ser correcta que la compleja.</p>
-          <a href="https://es.wikipedia.org/wiki/Navaja_de_Ockham" class="btn btn-primary">Wikipedia</a>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 animate-fade-in">
+          <h1 class="display-4 fw-bold mb-4">Explora el conocimiento más valioso</h1>
+          <p class="fs-5 text-muted mb-4">Una colección de conceptos, frases y libros que expanden tu mente y enriquecen tu entendimiento del mundo.</p>
+          <div class="d-flex gap-3">
+            <a href="#conceptos" class="btn btn-primary">Explorar Conceptos</a>
+            <a href="#libros" class="btn btn-outline-primary">Ver Biblioteca</a>
+          </div>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block">
+          <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000&auto=format&fit=crop" alt="Conocimiento" class="img-fluid rounded-3 shadow-lg">
         </div>
       </div>
-      <div class="card" style="width: 22rem;">
-        <img src="https://librescrum.files.wordpress.com/2020/12/004-ley-de-brooks.png " class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Ley de Brooks
-          </h5>
-          <p class="card-text">La Ley de Brooks es un principio utilizado en el desarrollo de software que afirma que
-            "añadir más efectivos a un proyecto de software en retraso, lo retrasará más"."Nueve mujeres no pueden tener
-            un bebé en un mes".</p>
-          <a href="https://es.wikipedia.org/wiki/Ley_de_Brooks" class="btn btn-primary">Wikipedia</a>
-        </div>
+    </div>
+  </section>
+
+  <!-- Conceptos Section -->
+  <section id="conceptos">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Conceptos</h2>
+        <p class="section-subtitle">Descubre ideas fundamentales que amplían tu comprensión del mundo</p>
       </div>
-      <div class="card" style="width: 22rem;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Fred_Barnard07.jpg/220px-Fred_Barnard07.jpg"
-          class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Sesgo de confirmación</h5>
-          <p class="card-text">El sesgo de confirmación o sesgo confirmatorio es la tendencia a favorecer, buscar,
-            interpretar y recordar la información que confirma las propias creencias o hipótesis, dando
-            desproporcionadamente menos consideración a posibles alternativas.​</p>
-          <a href="https://es.wikipedia.org/wiki/Sesgo_de_confirmación" class="btn btn-primary">Wikipedia</a>
-        </div>
+
+      <div class="search-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar conceptos...">
+        <button class="search-button" id="searchBtn">
+          <i class="fas fa-search"></i>
+        </button>
       </div>
-      <!-- Nueva tarjeta para el concepto de Overton -->
-<div class="card" style="width: 22rem;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Overton_Window_diagram-es.svg/200px-Overton_Window_diagram-es.svg.png"
-       class="card-img-top" alt="Ventana de Overton">
-  <div class="card-body">
-    <h5 class="card-title">Ventana de Overton</h5>
-    <p class="card-text">
-      La ventana de Overton describe las ideas consideradas aceptables en un momento dado en la sociedad. Incluye el rango de políticas que son viables y debatidas públicamente.
-    </p>
-    <a href="https://es.wikipedia.org/wiki/Ventana_de_Overton" class="btn btn-primary">Wikipedia</a>
-  </div>
-</div>
-      <div class="row">
-        <div class="card" style="width: 22rem;">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Streisand_Estate.jpg/300px-Streisand_Estate.jpg"
-            class="card-img-top" alt="...">
+
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="sesgos">Sesgos Cognitivos</button>
+        <button class="filter-btn" data-filter="efectos">Efectos</button>
+        <button class="filter-btn" data-filter="leyes">Leyes y Principios</button>
+        <button class="filter-btn" data-filter="otros">Otros</button>
+      </div>
+
+      <div class="card-grid">
+        <!-- Navaja de Ockham -->
+        <div class="card" data-category="leyes">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/William_of_Ockham_-_Logica_1341.jpg/220px-William_of_Ockham_-_Logica_1341.jpg" class="card-img-top" alt="Navaja de Ockham">
+          <div class="card-body">
+            <h5 class="card-title">Navaja de Ockham</h5>
+            <p class="card-text">La navaja de Ockham implica que, cuando dos teorías en igualdad de condiciones tienen las
+              mismas consecuencias, la teoría más simple tiene más probabilidades de ser correcta que la compleja.</p>
+            <a href="https://es.wikipedia.org/wiki/Navaja_de_Ockham" class="btn btn-primary">Wikipedia</a>
+          </div>
+        </div>
+
+        <!-- Ley de Brooks -->
+        <div class="card" data-category="leyes">
+          <img src="https://librescrum.files.wordpress.com/2020/12/004-ley-de-brooks.png" class="card-img-top" alt="Ley de Brooks">
+          <div class="card-body">
+            <h5 class="card-title">Ley de Brooks</h5>
+            <p class="card-text">La Ley de Brooks es un principio utilizado en el desarrollo de software que afirma que
+              "añadir más efectivos a un proyecto de software en retraso, lo retrasará más". "Nueve mujeres no pueden tener
+              un bebé en un mes".</p>
+            <a href="https://es.wikipedia.org/wiki/Ley_de_Brooks" class="btn btn-primary">Wikipedia</a>
+          </div>
+        </div>
+
+        <!-- Sesgo de confirmación -->
+        <div class="card" data-category="sesgos">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Fred_Barnard07.jpg/220px-Fred_Barnard07.jpg" class="card-img-top" alt="Sesgo de confirmación">
+          <div class="card-body">
+            <h5 class="card-title">Sesgo de confirmación</h5>
+            <p class="card-text">El sesgo de confirmación o sesgo confirmatorio es la tendencia a favorecer, buscar,
+              interpretar y recordar la información que confirma las propias creencias o hipótesis, dando
+              desproporcionadamente menos consideración a posibles alternativas.</p>
+            <a href="https://es.wikipedia.org/wiki/Sesgo_de_confirmación" class="btn btn-primary">Wikipedia</a>
+          </div>
+        </div>
+
+        <!-- Ventana de Overton -->
+        <div class="card" data-category="otros">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Overton_Window_diagram-es.svg/200px-Overton_Window_diagram-es.svg.png" class="card-img-top" alt="Ventana de Overton">
+          <div class="card-body">
+            <h5 class="card-title">Ventana de Overton</h5>
+            <p class="card-text">La ventana de Overton describe las ideas consideradas aceptables en un momento dado en la sociedad. Incluye el rango de políticas que son viables y debatidas públicamente.</p>
+            <a href="https://es.wikipedia.org/wiki/Ventana_de_Overton" class="btn btn-primary">Wikipedia</a>
+          </div>
+        </div>
+
+        <!-- Efecto Streisand -->
+        <div class="card" data-category="efectos">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Streisand_Estate.jpg/300px-Streisand_Estate.jpg" class="card-img-top" alt="Efecto Streisand">
           <div class="card-body">
             <h5 class="card-title">Efecto Streisand</h5>
             <p class="card-text">El efecto Streisand es un fenómeno en el que un intento de censura o encubrimiento de
               cierta información fracasa o es contraproducente, ya que esta acaba siendo ampliamente divulgada o
-              reconocida, de modo que recibe mayor visibilidad de la que hubiera tenido si no se la hubiese pretendido
-              acallar.</p>
+              reconocida, recibiendo mayor visibilidad de la que hubiera tenido.</p>
             <a href="https://es.wikipedia.org/wiki/Efecto_Streisand" class="btn btn-primary">Wikipedia</a>
           </div>
         </div>
-        <div class="card" style="width: 22rem;">
-          <img src="https://i0.wp.com/algopoco.com/wp-content/uploads/2021/05/sesgo-de-supervivencia.webp"
-            class="card-img-top" alt="...">
+
+        <!-- Sesgo del superviviente -->
+        <div class="card" data-category="sesgos">
+          <img src="https://i0.wp.com/algopoco.com/wp-content/uploads/2021/05/sesgo-de-supervivencia.webp" class="card-img-top" alt="Sesgo del superviviente">
           <div class="card-body">
             <h5 class="card-title">Sesgo del superviviente</h5>
-            <p class="card-text">El sesgo del superviviente o sesgo de supervivencia es la falacia lógica que consiste
+            <p class="card-text">El sesgo del superviviente es la falacia lógica que consiste
               en concentrarse en las personas o cosas que superaron un proceso de selección pasando por alto a aquellas
-              que no lo hicieron, típicamente por su falta de visibilidad. Esto puede conllevar a conclusiones falsas de
-              muy diferentes formas. </p>
+              que no lo hicieron, típicamente por su falta de visibilidad.</p>
             <a href="https://es.wikipedia.org/wiki/Sesgo_del_superviviente" class="btn btn-primary">Wikipedia</a>
           </div>
         </div>
-        <div class="card" style="width: 22rem;">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Dunning%E2%80%93Kruger_Effect2.svg/300px-Dunning%E2%80%93Kruger_Effect2.svg.png"
-            class="card-img-top" alt="...">
+
+        <!-- Efecto Dunning-Kruger -->
+        <div class="card" data-category="efectos">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Dunning%E2%80%93Kruger_Effect2.svg/300px-Dunning%E2%80%93Kruger_Effect2.svg.png" class="card-img-top" alt="Efecto Dunning-Kruger">
           <div class="card-body">
             <h5 class="card-title">Efecto Dunning-Kruger</h5>
             <p class="card-text">El efecto Dunning-Kruger es el sesgo cognitivo por el cual las personas con baja
-              habilidad en una tarea sobrestiman su habilidad.</p>
+              habilidad en una tarea sobrestiman su habilidad, mientras que aquellas que son expertas suelen subestimar sus capacidades.</p>
             <a href="https://es.wikipedia.org/wiki/Efecto_Dunning-Kruger" class="btn btn-primary">Wikipedia</a>
           </div>
         </div>
-        <div class="card" style="width: 22rem;">
-          <img src="https://storygrid.com/wp-content/uploads/2020/04/What-is-a-1024x1024.png" class="card-img-top"
-            alt="...">
+
+        <!-- MacGuffin -->
+        <div class="card" data-category="otros">
+          <img src="https://storygrid.com/wp-content/uploads/2020/04/What-is-a-1024x1024.png" class="card-img-top" alt="MacGuffin">
           <div class="card-body">
             <h5 class="card-title">Macguffin</h5>
-            <p class="card-text">Un Macguffin (también MacGuffin, McGuffin o Maguffin) es un elemento de suspenso que
-              hace que los personajes avancen en la trama, pero que puede tener o no mayor relevancia en la trama en sí.
-              MacGuffin es una expresión acuñada por Alfred Hitchcock que designa una excusa argumental que motiva a los
-              personajes y al desarrollo de una historia, pero carece de relevancia por sí misma.</p>
+            <p class="card-text">Un Macguffin es un elemento de suspenso que hace que los personajes avancen en la trama, pero que puede tener o no mayor relevancia en la trama en sí. Es una expresión acuñada por Alfred Hitchcock.</p>
             <a href="https://es.wikipedia.org/wiki/Macguffin" class="btn btn-primary">Wikipedia</a>
           </div>
         </div>
-        <div class="card" style="width: 22rem;">
-          <img src="https://www.psicoactiva.com/wp-content/uploads/blog/2018/12/arquetipos-jung-nombres.jpg"
-            class="card-img-top" alt="...">
+
+        <!-- Arquetipos de Jung -->
+        <div class="card" data-category="otros">
+          <img src="https://www.psicoactiva.com/wp-content/uploads/blog/2018/12/arquetipos-jung-nombres.jpg" class="card-img-top" alt="Arquetipos de Jung">
           <div class="card-body">
             <h5 class="card-title">Los 12 arquetipos de personas</h5>
-            <p class="card-text">Jung define a partir de aquí doce arquetipos primarios con diferentes significados,
-              valores y personalidades que simbolizan las motivaciones más básicas de los seres humanos. Estos doce
-              arquetipos son:</p>
+            <p class="card-text">Jung define doce arquetipos primarios con diferentes significados, valores y personalidades que simbolizan las motivaciones más básicas de los seres humanos.</p>
             <a href="https://www.psicoactiva.com/blog/los-arquetipos-de-jung/" class="btn btn-primary">Más info</a>
           </div>
         </div>
-        <div class="card" style="width: 22rem;">
-          <img
-            src="data:image/jpeg;base64,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"
-            class="card-img-top" alt="...">
+
+        <!-- Efecto Pigmalión -->
+        <div class="card" data-category="efectos">
+          <img src="https://cdn.psicologiaymente.com/media/2018/09/17215755/efecto-pigmalion.jpg" class="card-img-top" alt="Efecto Pigmalión">
           <div class="card-body">
-            <h5 class="card-title">Efecto Pigmaliòn</h5>
+            <h5 class="card-title">Efecto Pigmalión</h5>
             <p class="card-text">Suceso por el que una persona consigue lo que se proponía previamente a causa de la
-              creencia de que puede conseguirlo</p>
+              creencia de que puede conseguirlo. Las expectativas positivas influyen en el rendimiento de manera positiva.</p>
             <a href="https://es.wikipedia.org/wiki/Efecto_Pigmalión" class="btn btn-primary">Más info</a>
           </div>
         </div>
-        <div class="card" style="width: 22rem;">
-          <img
-            src="https://i0.wp.com/www.inversornovel.com/wp-content/uploads/2020/08/shopping-1761233_640.jpg?fit=640%2C416&ssl=1"
-            class="card-img-top" alt="...">
+
+        <!-- Efecto Diderot -->
+        <div class="card" data-category="efectos">
+          <img src="https://i0.wp.com/www.inversornovel.com/wp-content/uploads/2020/08/shopping-1761233_640.jpg?fit=640%2C416&ssl=1" class="card-img-top" alt="Efecto Diderot">
           <div class="card-body">
             <h5 class="card-title">Efecto Diderot</h5>
-            <p class="card-text">El efecto Diderot es un fenómeno social relacionado con los bienes de consumo. Está
-              basado en dos ideas: La primera idea es que los bienes adquiridos por los consumidores se alinearán con su
-              sentido de identidad y, como resultado, se complementarán entre sí. La segunda idea establece que la
-              introducción de una nueva posesión que se desvíe de los bienes complementarios actuales del consumidor
-              puede resultar en un proceso de consumo en espiral. El término fue acuñado por el antropólogo y estudioso
-              de los patrones de consumo Grant McCracken en 1988, y lleva el nombre del filósofo francés Denis Diderot
-              (1713-1784), quien describió por primera vez el efecto en un ensayo.</p>
+            <p class="card-text">Fenómeno social relacionado con los bienes de consumo. Los bienes adquiridos se alinean con el sentido de identidad, y la introducción de una nueva posesión que se desvía puede resultar en un proceso de consumo en espiral.</p>
             <a href="https://es.wikipedia.org/wiki/Efecto_Diderot" class="btn btn-primary">Más info</a>
           </div>
         </div>
-        <div class="card" style="width: 22rem;">
-          <img
-            src="https://1.bp.blogspot.com/-UK5-cyOHYLc/YFjM5evYNpI/AAAAAAAAAUM/fow0jSFH9wchjkiE1pwjPgF64UXzgcUNwCLcBGAsYHQ/s1532/AnalisisTransaccionalNEW.png"
-            class="card-img-top" alt="...">
+
+        <!-- Análisis transaccional -->
+        <div class="card" data-category="otros">
+          <img src="https://1.bp.blogspot.com/-UK5-cyOHYLc/YFjM5evYNpI/AAAAAAAAAUM/fow0jSFH9wchjkiE1pwjPgF64UXzgcUNwCLcBGAsYHQ/s1532/AnalisisTransaccionalNEW.png" class="card-img-top" alt="Análisis transaccional">
           <div class="card-body">
             <h5 class="card-title">Análisis transaccional</h5>
-            <p class="card-text">El análisis transaccional (AT) es una teoría y método de psicoterapia mediante el cual
-              se analizan las transacciones sociales para determinar el estado del yo del comunicador (si se asemeja al
-              rol de un padre, niño o adulto) como base para entender el comportamiento.1​ En el análisis transaccional,
-              al comunicador se le enseña a modificar el estado del yo como una forma de solucionar problemas
-              emocionales. El método se desvía del psicoanálisis freudiano que se enfoca en aumentar la conciencia de
-              los contenidos de ideas que moran en el subconsciente. Eric Berne desarrolló el concepto y el paradigma
-              del análisis transaccional a fines de la década de 1950.</p>
+            <p class="card-text">El análisis transaccional es una teoría y método de psicoterapia que analiza las transacciones sociales para determinar el estado del yo del comunicador como base para entender el comportamiento.</p>
             <a href="https://es.wikipedia.org/wiki/Análisis_transaccional" class="btn btn-primary">Más info</a>
           </div>
         </div>
 
-        <div class="card" style="width: 22rem;">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Standard_deviation_diagram.svg/450px-Standard_deviation_diagram.svg.png"
-            class="card-img-top" alt="...">
+        <!-- Más tarjetas... -->
+        <!-- Desviación típica -->
+        <div class="card" data-category="otros">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Standard_deviation_diagram.svg/450px-Standard_deviation_diagram.svg.png" class="card-img-top" alt="Desviación típica">
           <div class="card-body">
-            <h5 class="card-title">Desviación tipica</h5>
-            <p class="card-text">En estadística, la desviación típica (también conocida como desviación estándar y
-              desvío típico y representada de manera abreviada por la letra griega minúscula sigma σ o la letra latina
-              s, así como por las siglas SD (de standard deviation, en algunos textos traducidos del inglés) es una
-              medida que se utiliza para cuantificar la variación o la dispersión de un conjunto de datos numéricos</p>
+            <h5 class="card-title">Desviación típica</h5>
+            <p class="card-text">En estadística, la desviación típica es una medida que se utiliza para cuantificar la variación o la dispersión de un conjunto de datos numéricos.</p>
             <a href="https://es.wikipedia.org/wiki/Desviación_típica" class="btn btn-primary">Más info</a>
           </div>
         </div>
-        <div class="card" style="width: 22rem;">
-          <img
-            src="data:image/jpeg;base64,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"
-            class="card-img-top" alt="...">
+
+        <!-- Zugzwang -->
+        <div class="card" data-category="otros">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flarealidadmasalla.files.wordpress.com%2F2016%2F07%2F546a6-zugzwang.png&f=1&nofb=1&ipt=367097ee9422e8550f89d413fd05be2a764f8ef963055b8dc94bea5641eacd30&ipo=images" class="card-img-top" alt="Zugzwang">
           <div class="card-body">
             <h5 class="card-title">Zugzwang</h5>
-            <p class="card-text">Zugzwang (del alemán Zug 'jugada', y Zwang, 'coacción, obligatoriedad', pronunciado
-              [tsuːktsvaŋ]) es una posición de ajedrez o de otros juegos como el xiangqi. Se dice que un jugador está en
-              zugzwang si cualquier movimiento permitido supone empeorar su situación.</p>
+            <p class="card-text">Zugzwang es una posición de ajedrez o de otros juegos como el xiangqi. Se dice que un jugador está en zugzwang si cualquier movimiento permitido supone empeorar su situación.</p>
             <a href="https://es.wikipedia.org/wiki/Zugzwang" class="btn btn-primary">Más info</a>
           </div>
-
-
-
         </div>
-        <div class="card" style="width: 22rem;">
-          <img src="https://i.ytimg.com/vi/R5r_29IpLDQ/maxresdefault.jpg" class="card-img-top" alt="...">
+
+        <!-- Onus probandi -->
+        <div class="card" data-category="otros">
+          <img src="https://i.ytimg.com/vi/R5r_29IpLDQ/maxresdefault.jpg" class="card-img-top" alt="Onus probandi">
           <div class="card-body">
             <h5 class="card-title">Onus probandi</h5>
-            <p class="card-text">Lo que se quiere decir con este aforismo es que la carga o el trabajo de probar un
-              enunciado debe recaer en aquel que rompe el estado de normalidad (el que afirma poseer una nueva verdad
-              sobre un tema).</p>
+            <p class="card-text">Lo que se quiere decir con este aforismo es que la carga o el trabajo de probar un enunciado debe recaer en aquel que rompe el estado de normalidad (el que afirma poseer una nueva verdad sobre un tema).</p>
             <a href="https://es.m.wikipedia.org/wiki/Onus_probandi" class="btn btn-primary">Más info</a>
           </div>
         </div>
-        <div class="card" style="width: 22rem;">
-          <img src="https://cursosmultimedia.es/wp-content/uploads/2021/03/comunicacion-300x171.jpg"
-            class="card-img-top" alt="...">
+
+        <!-- Triple C -->
+        <div class="card" data-category="otros">
+          <img src="https://cursosmultimedia.es/wp-content/uploads/2021/03/comunicacion-300x171.jpg" class="card-img-top" alt="Triple C">
           <div class="card-body">
             <h5 class="card-title">Triple C</h5>
-            <p class="card-text">Contexto, combinación y congruencia, son las 3 C de la comunicación, antes de sacar
-              conclusiones sobre como dicen las cosas las peronas, hay que ver las 3 Cs.</p>
-
+            <p class="card-text">Contexto, combinación y congruencia, son las 3 C de la comunicación, antes de sacar conclusiones sobre como dicen las cosas las personas, hay que ver las 3 Cs.</p>
+            <a href="#" class="btn btn-primary disabled">Sin enlace disponible</a>
           </div>
         </div>
-        <div class="card" style="width: 22rem;">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6IYwuVxTOcj3R4ciuKLhmODwi1moq3b_JoQ&s"
-            class="card-img-top" alt="...">
+        
+        <!-- Ikigai -->
+        <div class="card" data-category="otros">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6IYwuVxTOcj3R4ciuKLhmODwi1moq3b_JoQ&s" class="card-img-top" alt="Ikigai">
           <div class="card-body">
-            <h5 class="card-title">Ikigai C</h5>
-            <p class="card-text">La palabra ikigai se utiliza generalmente para indicar la fuente del valor de la vida
-              propia, o las cosas que hacen que la vida valga la pena. En segundo lugar, la palabra se utiliza para
-              referirse a las circunstancias mentales y espirituales en las que las personas sienten que sus vidas son
-              valiosas</p>
-            <a href="https://es.wikipedia.org/wiki/Ikigai#:~:text=La%20palabra%20ikigai%20se%20utiliza,que%20sus%20vidas%20son%20valiosas."
-              class="btn btn-primary">Más info</a>
-
+            <h5 class="card-title">Ikigai</h5>
+            <p class="card-text">La palabra ikigai se utiliza generalmente para indicar la fuente del valor de la vida propia, o las cosas que hacen que la vida valga la pena.</p>
+            <a href="https://es.wikipedia.org/wiki/Ikigai" class="btn btn-primary">Más info</a>
           </div>
         </div>
-
-        <div class="card" style="width: 22rem;">
-          <img src="https://qaspire.com/wp-content/uploads/2024/08/1_SpotlightEffect_800px.jpeg"
-            class="card-img-top" alt="...">
+        
+        <!-- Spotlight Effect -->
+        <div class="card" data-category="efectos">
+          <img src="https://qaspire.com/wp-content/uploads/2024/08/1_SpotlightEffect_800px.jpeg" class="card-img-top" alt="Spotlight Effect">
           <div class="card-body">
-            <h5 class="card-title">Spotlight effect</h5>
-            <p class="card-text">El efecto spotlight, también conocido como efecto foco, es un sesgo cognitivo que hace que las personas crean que los demás les prestan más atención de la que realmente reciben</p>
-            <a href="https://en.wikipedia.org/wiki/Spotlight_effect"
-              class="btn btn-primary">Más info</a>
-
+            <h5 class="card-title">Spotlight Effect</h5>
+            <p class="card-text">El efecto spotlight, también conocido como efecto foco, es un sesgo cognitivo que hace que las personas crean que los demás les prestan más atención de la que realmente reciben.</p>
+            <a href="https://en.wikipedia.org/wiki/Spotlight_effect" class="btn btn-primary">Más info</a>
           </div>
         </div>
-
-                <div class="card" style="width: 22rem;">
-          <img src="https://www.google.com/imgres?q=ley%20de%20jakob&imgurl=https%3A%2F%2Fdanielrodev.com%2Fwp-content%2Fuploads%2F2024%2F10%2FLey-de-jakob-1-1360x765.jpg&imgrefurl=https%3A%2F%2Fdanielrodev.com%2Fux-ui%2Fley-de-jakob%2F&docid=w1IdVmO7ShH2rM&tbnid=D8riVo2B7nOPbM&vet=12ahUKEwjNltG-zp2LAxWklJUCHSPiDmEQM3oECGUQAA..i&w=1360&h=765&hcb=2&ved=2ahUKEwjNltG-zp2LAxWklJUCHSPiDmEQM3oECGUQAA"
-            class="card-img-top" alt="...">
+        
+        <!-- Ley de Jakob -->
+        <div class="card" data-category="leyes">
+          <img src="https://lawsofux.com/assets/img/cards/jakobs-law.png" class="card-img-top" alt="Ley de Jakob">
           <div class="card-body">
             <h5 class="card-title">Ley de Jakob</h5>
             <p class="card-text">Los usuarios pasan la mayor parte de su tiempo en otros sitios. Esto significa que los usuarios prefieren que su sitio funcione de la misma manera que todos los demás sitios que ya conocen.</p>
-            <a href="https://lawsofux.com/es/ley-de-jakob/"
-              class="btn btn-primary">Más info</a>
-
+            <a href="https://lawsofux.com/es/ley-de-jakob/" class="btn btn-primary">Más info</a>
           </div>
         </div>
-
-
-
-                        <div class="card" style="width: 22rem;">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTocNHMKwmTgguHFMcfRZrKxfCxpPwMewtDvg&s"
-            class="card-img-top" alt="...">
+        
+        <!-- Sesgo de proximidad -->
+        <div class="card" data-category="sesgos">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTocNHMKwmTgguHFMcfRZrKxfCxpPwMewtDvg&s" class="card-img-top" alt="Sesgo de proximidad">
           <div class="card-body">
             <h5 class="card-title">Sesgo de proximidad</h5>
-            <p class="card-text">El sesgo de proximidad es la tendencia a favorecer a las personas o cosas que están físicamente cerca. Es un fenómeno cognitivo que se produce por la mayor familiaridad que se tiene con lo que se ve con más frecuencia. 
-</p>
-            <a href="https://www.questionpro.com/blog/es/sesgo-de-proximidad/"
-              class="btn btn-primary">Más info</a>
-
+            <p class="card-text">El sesgo de proximidad es la tendencia a favorecer a las personas o cosas que están físicamente cerca. Es un fenómeno cognitivo que se produce por la mayor familiaridad con lo que se ve con más frecuencia.</p>
+            <a href="https://www.questionpro.com/blog/es/sesgo-de-proximidad/" class="btn btn-primary">Más info</a>
           </div>
         </div>
-
-
-                                <div class="card" style="width: 22rem;">
-          <img src="https://www.academiadeinversion.com/wp-content/uploads/2013/04/efecto-halo-diablo.png"
-            class="card-img-top" alt="...">
+        
+        <!-- Efecto Halo -->
+        <div class="card" data-category="efectos">
+          <img src="https://www.academiadeinversion.com/wp-content/uploads/2013/04/efecto-halo-diablo.png" class="card-img-top" alt="Efecto Halo">
           <div class="card-body">
             <h5 class="card-title">Efecto Halo</h5>
-            <p class="card-text">El efecto halo es un sesgo cognitivo que se produce cuando una primera impresión positiva o negativa de una persona o cosa influye en la evaluación de otras características.  
-</p>
-            <a href="https://es.wikipedia.org/wiki/Efecto_halo"
-              class="btn btn-primary">Más info</a>
-
+            <p class="card-text">El efecto halo es un sesgo cognitivo que se produce cuando una primera impresión positiva o negativa de una persona o cosa influye en la evaluación de otras características.</p>
+            <a href="https://es.wikipedia.org/wiki/Efecto_halo" class="btn btn-primary">Más info</a>
           </div>
         </div>
-                                <div class="card" style="width: 22rem;">
-          <img src="https://www.academiadeinversion.com/wp-content/uploads/2013/04/efecto-halo-diablo.png"
-            class="card-img-top" alt="...">
+        
+        <!-- Magnum Opus -->
+        <div class="card" data-category="otros">
+          <img src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Magnum Opus">
           <div class="card-body">
             <h5 class="card-title">Magnum Opus</h5>
-            <p class="card-text">Se llama magnum opus (a veces opus magnum, del latín: ‘gran obra’[1]​) u obra maestra a la mejor o a la más renombrada producción artística de una persona.
-</p>
-            <a href="https://es.wikipedia.org/wiki/Magnum_opus"
-              class="btn btn-primary">Más info</a>
-
+            <p class="card-text">Se llama magnum opus (a veces opus magnum, del latín: 'gran obra') u obra maestra a la mejor o a la más renombrada producción artística de una persona.</p>
+            <a href="https://es.wikipedia.org/wiki/Magnum_opus" class="btn btn-primary">Más info</a>
           </div>
         </div>
-        <div class="card" style="width: 22rem;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Emotions_wheel.svg/1200px-Emotions_wheel.svg.png"
-       class="card-img-top" alt="Representación de emociones humanas">
-  <div class="card-body">
-    <h5 class="card-title">Heurística afectiva</h5>
-    <p class="card-text">
-      La heurística afectiva es un atajo mental mediante el cual las personas toman decisiones y emiten juicios rápidos basados en sus emociones inmediatas, más que en un análisis racional. Esta respuesta emocional influye fuertemente en la percepción de riesgos y beneficios.
-    </p>
-    <a href="https://es.wikipedia.org/wiki/Heurística_afectiva" class="btn btn-primary">Wikipedia</a>
-  </div>
-</div>
-
-
-
         
-        
+        <!-- Heurística afectiva -->
+        <div class="card" data-category="sesgos">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Emotions_wheel.svg/1200px-Emotions_wheel.svg.png" class="card-img-top" alt="Representación de emociones humanas">
+          <div class="card-body">
+            <h5 class="card-title">Heurística afectiva</h5>
+            <p class="card-text">La heurística afectiva es un atajo mental mediante el cual las personas toman decisiones y emiten juicios rápidos basados en sus emociones inmediatas, más que en un análisis racional.</p>
+            <a href="https://es.wikipedia.org/wiki/Heurística_afectiva" class="btn btn-primary">Wikipedia</a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="container" id="frases">
-      <h1>Frases</h1>
-      <!--    <div class="card-body">
-        <blockquote class="blockquote">
-          <p>El arte de la guerra es someter al enemigo sin luchar</p>
-          <footer class="blockquote-footer">Sun-Tzu</footer>
-        </blockquote>
-      </div> -->
+  </section>
 
-      <div class="card-body">
-        <blockquote class="blockquote">
-          <p>El arte de la guerra es someter al enemigo sin luchar</p>
-          <footer class="blockquote-footer">Sun-Tzu</footer>
-        </blockquote>
-      </div>
-      <div class="card-body">
-        <blockquote class="blockquote">
-          <p>Ningún mar en calma hizo experto a un marinero</p>
-          <footer class="blockquote-footer">Anonimo</footer>
-        </blockquote>
+  <!-- Frases Section -->
+  <section id="frases">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Frases</h2>
+        <p class="section-subtitle">Palabras de sabiduría que inspiran y provocan reflexión</p>
       </div>
 
-      <div class="card-body">
-        <blockquote class="blockquote">
-          <p>A veces es mejor encender un lanzallamas que maldecir a la oscuridad</p>
-          <footer class="blockquote-footer">Terry Pratchett</footer>
-        </blockquote>
-      </div>
-      <div class="card-body">
-        <blockquote class="blockquote">
-          <p>El dolor es el mejor maestro, pero nadie quiere ir a su clase</p>
-          <footer class="blockquote-footer">Choi Hong Hi</footer>
-        </blockquote>
-      </div>
-      <div class="card-body">
-        <blockquote class="blockquote">
-          <p>Me lo contaron y lo olvidé; lo vi y lo entendí; lo hice y lo aprendí</p>
-          <footer class="blockquote-footer">Confució</footer>
-        </blockquote>
-      </div>
-      <div class="card-body">
-        <blockquote class="blockquote">
-          <p>La vida es ahora. No hay ningún otro momento que exista.</p>
-          <footer class="blockquote-footer">Eckhart Tolle</footer>
-        </blockquote>
-      </div>
-      <div class="card-body">
-        <blockquote class="blockquote">
-          <p>No hagas suposiciones</p>
-          <footer class="blockquote-footer">Miguel Ruiz</footer>
-        </blockquote>
-      </div>
-      <div class="card-body">
-        <blockquote class="blockquote">
-          <p>Ningún árbol, suele decirse, crece hasta el cielo sin que sus raíces alcancen el infierno</p>
-          <footer class="blockquote-footer">Carl Jung</footer>
-        </blockquote>
-      </div>
-      <div class="card-body">
-        <blockquote class="blockquote">
-          <p>Hago lo que puedo con lo que tengo</p>
-          <footer class="blockquote-footer">Anonimo</footer>
-        </blockquote>
-      </div>
-      <div class="card-body">
-        <blockquote class="blockquote">
-          <p> La persona que dice que no se puede hacer no debe interrumpir a la persona que lo está haciendo.</p>
-          <footer class="blockquote-footer">Proverbio chino robado a <a
-              href="https://www.linkedin.com/in/diego-moscato/">Diego Moscato</a></footer>
-        </blockquote>
-      </div>
-      <div class="card-body">
-        <blockquote class="blockquote">
-          <p>¿Quién de ustedes, por mucho que se preocupe, puede añadir una sola hora al curso de su vida?</p>
-          <footer class="blockquote-footer">Jesus</footer>
-        </blockquote>
-      </div>
-      <div class="card-body">
-        <blockquote class="blockquote">
-          <p>Mejor hecho que perfecto</p>
-          <footer class="blockquote-footer">Sheryl Sandberg</footer>
-        </blockquote>
-        <blockquote class="blockquote">
-          <p>Ala es grande y poderoso, pero por las dudas ata
-            el camello</p>
-          <footer class="blockquote-footer">-Nicolás Piazza</footer>
-        </blockquote>
-                <blockquote class="blockquote">
-          <p>Lo que Juan dice de Pedro habla más de Juan que de Pedro</p>
-          <footer class="blockquote-footer">-Anónima</footer>
-        </blockquote>
-          </blockquote>
-                <blockquote class="blockquote">
-          <p>El problema lo tiene el que no puede ver la cama desordenada</p>
-          <footer class="blockquote-footer">-Anónima</footer>
-        </blockquote>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"El arte de la guerra es someter al enemigo sin luchar."</p>
+            <footer class="blockquote-footer">Sun-Tzu</footer>
+          </div>
+        </div>
         
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"Ningún mar en calma hizo experto a un marinero."</p>
+            <footer class="blockquote-footer">Anónimo</footer>
+          </div>
+        </div>
         
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"A veces es mejor encender un lanzallamas que maldecir a la oscuridad."</p>
+            <footer class="blockquote-footer">Terry Pratchett</footer>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"El dolor es el mejor maestro, pero nadie quiere ir a su clase."</p>
+            <footer class="blockquote-footer">Choi Hong Hi</footer>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"Me lo contaron y lo olvidé; lo vi y lo entendí; lo hice y lo aprendí."</p>
+            <footer class="blockquote-footer">Confucio</footer>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"La vida es ahora. No hay ningún otro momento que exista."</p>
+            <footer class="blockquote-footer">Eckhart Tolle</footer>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"No hagas suposiciones."</p>
+            <footer class="blockquote-footer">Miguel Ruiz</footer>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"Ningún árbol, suele decirse, crece hasta el cielo sin que sus raíces alcancen el infierno."</p>
+            <footer class="blockquote-footer">Carl Jung</footer>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"Hago lo que puedo con lo que tengo."</p>
+            <footer class="blockquote-footer">Anónimo</footer>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"La persona que dice que no se puede hacer no debe interrumpir a la persona que lo está haciendo."</p>
+            <footer class="blockquote-footer">Proverbio chino</footer>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"¿Quién de ustedes, por mucho que se preocupe, puede añadir una sola hora al curso de su vida?"</p>
+            <footer class="blockquote-footer">Jesús</footer>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"Mejor hecho que perfecto."</p>
+            <footer class="blockquote-footer">Sheryl Sandberg</footer>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"Alá es grande y poderoso, pero por las dudas ata el camello."</p>
+            <footer class="blockquote-footer">Nicolás Piazza</footer>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"Lo que Juan dice de Pedro habla más de Juan que de Pedro."</p>
+            <footer class="blockquote-footer">Anónima</footer>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="blockquote">
+            <p>"El problema lo tiene el que no puede ver la cama desordenada."</p>
+            <footer class="blockquote-footer">Anónima</footer>
+          </div>
+        </div>
       </div>
-      <div class="container" style="margin-top: 5%;" id="libros">
-        <h1>Libros</h1>
-        <div class="row">
-          <div class="card-body">
-            <blockquote class="blockquote">
-              <p><a href="https://drive.google.com/file/d/1Xn2xDVRhcEOdvEh3ESlltupWiYA1dh_E/view?usp=sharing"
-                  target="_blank">El poder del ahora</a></p>
-              <footer class="blockquote-footer">Eckhart Tolle</footer>
-            </blockquote>
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote">
-              <p><a href="https://drive.google.com/file/d/1ZJdBDv_yRCnSZK5zyfXpVhg3RgrqDvgY/view?usp=sharing"
-                  target="_blank">Los 4 Acuerdos</a></p>
-              <footer class="blockquote-footer">Don Miguel Ruiz</footer>
-            </blockquote>
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote">
-              <p><a href="https://drive.google.com/file/d/17Bo7Omy58Sa3OznpnR-PNXXpAJm16lDg/view?usp=sharing"
-                  target="_blank">El arte de la guerra</a></p>
-              <footer class="blockquote-footer">Sun-Tzu</footer>
-            </blockquote>
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote">
-              <p><a href="https://drive.google.com/file/d/1_RHN86PoVNK2zEHhD5xNbNI7Vdw2Xf2B/view?usp=sharing"
-                  target="_blank">Tao Te King</a></p>
-              <footer class="blockquote-footer">Lao Tse</footer>
-            </blockquote>
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote">
-              <p><a
-                  href="https://docs.google.com/document/d/14bYWMgNhcV8r8A1AfCKJXWj7CCfvgC33/edit?usp=sharing&ouid=118284225763640228018&rtpof=true&sd=true"
-                  target="_blank">Ladrón del tiempo</a></p>
-              <footer class="blockquote-footer">Terry Pratchet</footer>
-            </blockquote>
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote">
-              <p><a
-                  href="https://docs.google.com/document/d/1HGNbiIEKUjv6aMve0mlWZXw7lzhwFZvA/edit?usp=sharing&ouid=118284225763640228018&rtpof=true&sd=true"
-                  target="_blank">El kybalion</a></p>
-              <footer class="blockquote-footer">Tres iniciados</footer>
-            </blockquote>
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote">
-              <p><a href="https://drive.google.com/file/d/1mVRrLImOUs1qSyp04agZLPfo78UNf1LI/view?usp=sharing"
-                  target="_blank">Desapegarse sin anestesia</a></p>
-              <footer class="blockquote-footer">Walter Risso</footer>
-            </blockquote>
-          </div>
-          <h1 id="frases" class="text-center mt-5">Frases</h1>
+    </div>
+  </section>
 
+  <!-- Libros Section -->
+  <section id="libros">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Libros</h2>
+        <p class="section-subtitle">Una selección de obras que transformarán tu manera de ver el mundo</p>
+      </div>
 
-
-
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1639337288i/6708.jpg" class="card-img-top" alt="El poder del ahora">
+            <div class="card-body">
+              <h5 class="card-title">El poder del ahora</h5>
+              <p class="card-text">Una guía para la iluminación espiritual que nos enseña el camino hacia la paz interior y la realización personal.</p>
+              <p class="text-muted mb-3">Autor: Eckhart Tolle</p>
+              <a href="https://drive.google.com/file/d/1Xn2xDVRhcEOdvEh3ESlltupWiYA1dh_E/view?usp=sharing" target="_blank" class="btn btn-primary">
+                <i class="fas fa-download me-2"></i>Descargar
+              </a>
+            </div>
+          </div>
         </div>
 
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd0a4MHlLewQslH-7xOIKMC5gJNb8u2pxfqA&usqp=CAU" class="card-img-top" alt="Los 4 Acuerdos">
+            <div class="card-body">
+              <h5 class="card-title">Los 4 Acuerdos</h5>
+              <p class="card-text">Una guía práctica para la libertad personal basada en la sabiduría tolteca para transformar nuestra vida.</p>
+              <p class="text-muted mb-3">Autor: Don Miguel Ruiz</p>
+              <a href="https://drive.google.com/file/d/1ZJdBDv_yRCnSZK5zyfXpVhg3RgrqDvgY/view?usp=sharing" target="_blank" class="btn btn-primary">
+                <i class="fas fa-download me-2"></i>Descargar
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1328137073i/10534.jpg" class="card-img-top" alt="El arte de la guerra">
+            <div class="card-body">
+              <h5 class="card-title">El arte de la guerra</h5>
+              <p class="card-text">Un tratado militar que proporciona estrategias y tácticas no solo para conflictos, sino también para la vida cotidiana.</p>
+              <p class="text-muted mb-3">Autor: Sun-Tzu</p>
+              <a href="https://drive.google.com/file/d/17Bo7Omy58Sa3OznpnR-PNXXpAJm16lDg/view?usp=sharing" target="_blank" class="btn btn-primary">
+                <i class="fas fa-download me-2"></i>Descargar
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1355013913i/67896.jpg" class="card-img-top" alt="Tao Te King">
+            <div class="card-body">
+              <h5 class="card-title">Tao Te King</h5>
+              <p class="card-text">Una obra fundamental que explora los principios del taoísmo y la naturaleza del camino (Tao).</p>
+              <p class="text-muted mb-3">Autor: Lao Tse</p>
+              <a href="https://drive.google.com/file/d/1_RHN86PoVNK2zEHhD5xNbNI7Vdw2Xf2B/view?usp=sharing" target="_blank" class="btn btn-primary">
+                <i class="fas fa-download me-2"></i>Descargar
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1389765260i/722403.jpg" class="card-img-top" alt="Ladrón del tiempo">
+            <div class="card-body">
+              <h5 class="card-title">Ladrón del tiempo</h5>
+              <p class="card-text">Una novela humorística que mezcla fantasía, filosofía y reflexiones sobre la naturaleza del tiempo.</p>
+              <p class="text-muted mb-3">Autor: Terry Pratchett</p>
+              <a href="https://docs.google.com/document/d/14bYWMgNhcV8r8A1AfCKJXWj7CCfvgC33/edit?usp=sharing&ouid=118284225763640228018&rtpof=true&sd=true" target="_blank" class="btn btn-primary">
+                <i class="fas fa-download me-2"></i>Descargar
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1347741199i/1363427.jpg" class="card-img-top" alt="El Kybalion">
+            <div class="card-body">
+              <h5 class="card-title">El Kybalion</h5>
+              <p class="card-text">Un libro que presenta los siete principios herméticos que rigen el universo según la filosofía hermética.</p>
+              <p class="text-muted mb-3">Autor: Tres iniciados</p>
+              <a href="https://docs.google.com/document/d/1HGNbiIEKUjv6aMve0mlWZXw7lzhwFZvA/edit?usp=sharing&ouid=118284225763640228018&rtpof=true&sd=true" target="_blank" class="btn btn-primary">
+                <i class="fas fa-download me-2"></i>Descargar
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1399482677i/21412143.jpg" class="card-img-top" alt="Desapegarse sin anestesia">
+            <div class="card-body">
+              <h5 class="card-title">Desapegarse sin anestesia</h5>
+              <p class="card-text">Una guía para enfrentar el desapego emocional y superar los vínculos perjudiciales.</p>
+              <p class="text-muted mb-3">Autor: Walter Riso</p>
+              <a href="https://drive.google.com/file/d/1mVRrLImOUs1qSyp04agZLPfo78UNf1LI/view?usp=sharing" target="_blank" class="btn btn-primary">
+                <i class="fas fa-download me-2"></i>Descargar
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-  <div class="footer" id="footer">Compra libros<br>Por Esteban Piazza
-    <a href="https://contacto-alpha.vercel.app" target="_blank">
-      <button class="feedback">Contacto</button></a>
-  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h4 class="footer-title"><i class="fas fa-brain me-2"></i>StevePedia</h4>
+          <p>Un repositorio de conocimiento y sabiduría para expandir tu mente y enriquecer tu vida.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h4 class="footer-title">Enlaces rápidos</h4>
+          <div class="footer-links">
+            <a href="#conceptos"><i class="fas fa-angle-right me-2"></i>Conceptos</a>
+            <a href="#frases"><i class="fas fa-angle-right me-2"></i>Frases</a>
+            <a href="#libros"><i class="fas fa-angle-right me-2"></i>Libros recomendados</a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h4 class="footer-title">Contacto</h4>
+          <p><i class="fas fa-envelope me-2"></i> info@stevepedia.com</p>
+          <p><i class="fas fa-phone me-2"></i> +1 234 567 890</p>
+          <a href="https://contacto-alpha.vercel.app" target="_blank" class="feedback mt-2">
+            <i class="fas fa-comment-dots me-2"></i>Contactar
+          </a>
+        </div>
+      </div>
+      <div class="text-center footer-bottom">
+        <p>&copy; 2025 StevePedia. Por Esteban Piazza. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- JavaScript Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+
+  <!-- Custom JavaScript -->
+  <script>
+    // Back to top button
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const cards = document.querySelectorAll('.card');
+    
+    function performSearch() {
+      const searchTerm = searchInput.value.toLowerCase();
+      
+      cards.forEach(card => {
+        const title = card.querySelector('.card-title').textContent.toLowerCase();
+        const text = card.querySelector('.card-text').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || text.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+    
+    searchBtn.addEventListener('click', performSearch);
+    searchInput.addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        performSearch();
+      }
+    });
+    
+    // Filter buttons
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(b => b.classList.remove('active'));
+        
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        const filter = btn.getAttribute('data-filter');
+        
+        cards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId !== '#') {
+          document.querySelector(targetId).scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Update active nav link based on scroll position
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
