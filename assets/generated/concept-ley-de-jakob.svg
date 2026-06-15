@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Ley de Jakob">
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#3d315b"/><stop offset="1" stop-color="#b56576"/></linearGradient></defs>
+  <rect width="640" height="400" fill="url(#bg)"/>
+  <circle cx="538" cy="74" r="126" fill="#fff" opacity=".11"/>
+  <circle cx="96" cy="334" r="154" fill="#e8d7f1" opacity=".18"/>
+  <g transform="translate(64 70)"><circle cx="80" cy="78" r="16" fill="#e8d7f1"/><ellipse cx="80" cy="78" rx="66" ry="28" fill="none" stroke="#e8d7f1" stroke-width="8" transform="rotate(-25 80 78)"/><ellipse cx="80" cy="78" rx="66" ry="28" fill="none" stroke="#e8d7f1" stroke-width="8" transform="rotate(25 80 78)"/></g>
+  <text x="64" y="284" font-family="Poppins, Segoe UI, Arial, sans-serif" font-size="44" font-weight="800" fill="#ffffff"><tspan x="64" dy="0">Ley de Jakob</tspan></text>
+  <text x="64" y="358" font-family="Poppins, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2" fill="#ffffff" opacity=".72">LEYES</text>
+</svg>

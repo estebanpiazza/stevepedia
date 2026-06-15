@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Navaja de Ockham">
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#2d3a2f"/><stop offset="1" stop-color="#9fcf6b"/></linearGradient></defs>
+  <rect width="640" height="400" fill="url(#bg)"/>
+  <circle cx="538" cy="74" r="126" fill="#fff" opacity=".11"/>
+  <circle cx="96" cy="334" r="154" fill="#f4efe6" opacity=".18"/>
+  <g transform="translate(64 70)"><path d="M28 32h44c18 0 28 10 28 28v82c0-14-10-22-28-22H28zM100 60c0-18 10-28 28-28h32v88h-32c-18 0-28 8-28 22z" fill="#f4efe6" opacity=".95"/></g>
+  <text x="64" y="284" font-family="Poppins, Segoe UI, Arial, sans-serif" font-size="44" font-weight="800" fill="#ffffff"><tspan x="64" dy="0">Navaja de Ockham</tspan></text>
+  <text x="64" y="358" font-family="Poppins, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2" fill="#ffffff" opacity=".72">CONCEPTO</text>
+</svg>
